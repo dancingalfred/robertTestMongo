@@ -26,3 +26,16 @@ def removeDocumentById(databaseToUpdate:str, collectionToUpdate:str ,idToUpdate:
         collection.delete_one(query)
 
 #removeDocumentById("testData", "customers", "633fe16101d1eec1c4dc560f", True)
+
+
+#en funktion som returnerar ett dokument
+def queryDocumentById(databaseToQuery:str, collectionToQuery:str ,idToQuery:str):
+    database = myclient[databaseToQuery]
+    collection = database[collectionToQuery]
+    query = {'_id': ObjectId(idToQuery)}
+    documentSearchedFor = collection.find(query)
+    return documentSearchedFor
+
+# search = queryDocumentById("testData", "customers", "633fdc5d9e39c2cab67b7c9c")
+# for x in search:
+#   print(x)
